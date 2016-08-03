@@ -16,6 +16,33 @@ public class Main {
         }
 
         System.out.println("Hello " + name);
+
+        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel");
+
+        String promptResult = Main.scanner.nextLine();
+
+        if (promptResult.equals("1")){
+            System.out.println("Your Balance is $100");
+        }
+        else if (promptResult.equals("3")){
+            System.out.println("Thank you and please come again.");
+        }
+        else if (promptResult.equals("2")) {
+            System.out.println("How much would you like to withdraw?");
+        }
+
+        String withdrawAmount = Main.scanner.nextLine();
+
+        int a = Integer.parseInt(withdrawAmount);
+
+        if (a < 100) {
+            int remainingBalance = (100 - a);
+            System.out.println("Your available balance is " + remainingBalance + " dollars");
+            System.out.println("Please take your cash below");
+        }
+        else if (a > 100) {
+            throw new Exception("You ain't that rich FOOL!");
+        }
     }
 
 
