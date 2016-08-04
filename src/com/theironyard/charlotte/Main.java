@@ -3,9 +3,14 @@ package com.theironyard.charlotte;
 import java.util.Scanner;
 //imported Scanner class to imprint name
 public class Main {
-    public static Scanner scanner = new Scanner(System.in);
+    private static ATM atm = new ATM();
 
+    public static Scanner scanner = new Scanner(System.in);
+    //not necessary because im on the main method
     public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
+
         System.out.println("Welcome");
         System.out.println("What is your name?");
 
@@ -20,6 +25,8 @@ public class Main {
         System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel");
 
         String promptResult = Main.scanner.nextLine();
+        //didnt need to use main could have set it to scanner.nextline() through out
+        //should have reset this string to int
 
         if (promptResult.equals("1")){
             System.out.println("Your Balance is $100");
