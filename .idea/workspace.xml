@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fc49c35-b9ac-405e-b06e-b3fd59a70b6a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/theironyard/charlotte/Main.java" afterPath="$PROJECT_DIR$/src/com/theironyard/charlotte/Main.java" />
-    </list>
+    <list default="true" id="0fc49c35-b9ac-405e-b06e-b3fd59a70b6a" name="Default" comment="" />
     <ignored path="ATM.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
