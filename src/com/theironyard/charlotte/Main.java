@@ -34,14 +34,21 @@ public class Main {
         String withdrawAmount = Main.scanner.nextLine();
 
         int a = Integer.parseInt(withdrawAmount);
-
-        if (a < 100) {
+        //the way I interpreted hardmode was that withdraws that could be made with a combo of 5's, 10's and 20's were cool
+        if (a < 100 && (a % 5 == 0)) {
             int remainingBalance = (100 - a);
             System.out.println("Your available balance is " + remainingBalance + " dollars");
             System.out.println("Please take your cash below");
         }
         else if (a > 100) {
             throw new Exception("You ain't that rich FOOL!");
+        }
+        //I thought about having this loop back to the prompt of line 31 but realized the loop would need to be endless and I
+        //don't yet have the skill set to close the loop. so i just threw an exception
+        // I was thinking a try catch statement might work but ran out of time
+        else if (a < 100 && (a % 5 != 0)) {
+            System.out.println("Invalid submission. \nCan only withdraw 5's, 10's or 20's");
+            throw new Exception("Invalid submission");
         }
     }
 
