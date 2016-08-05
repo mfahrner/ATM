@@ -1,30 +1,71 @@
 package com.theironyard.charlotte;
 
+import java.util.HashMap;
 import java.util.Scanner;
 //imported Scanner class to imprint name
 public class Main {
-    private static ATM atm = new ATM();
 
-    public static Scanner scanner = new Scanner(System.in);
-    //not necessary because im on the main method
+    private static HashMap<String, Double> account = new HashMap<>();
+
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
+        account.put("mike", 100.00);
+        account.put("ben", 200.00);
 
         System.out.println("Welcome");
         System.out.println("What is your name?");
 
-        String name = Main.scanner.nextLine();
+        String name = scanner.nextLine();
+        //if statement to verify if user is in hashmap
 
         if (name.equals("")) {
             throw new Exception("Gotta have a name to get cash!");
         }
 
+        //if name is not recognized in hashmap-prompt for new account is good
+        //created account should include name and starting balance
+        if (!account.containsKey(name)) {
+            System.out.println("Would you like to create a new account [y/n]?");
+
+            String accPrompt = scanner.nextLine();
+
+            //don't know how to test if this is working?
+            if (accPrompt.equalsIgnoreCase("y")) {
+                System.out.println("Please input starting account balance");
+                String sBalance = scanner.nextLine();
+                double startBalance = Double.parseDouble(sBalance);
+                account.put(name, startBalance);
+            }
+            //thought about loop here but think i might be making it too hard
+            else if (accPrompt.equalsIgnoreCase("n")) {
+                System.out.println("Well fine then punk");
+                System.exit(0);
+            }
+        }
         System.out.println("Hello " + name);
+        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
 
-        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel");
 
-        String promptResult = Main.scanner.nextLine();
+
+
+
+
+
+
+
+
+
+
+    }
+}
+
+
+
+/*
+
+
+        String promptResult = scanner.nextLine();
         //didnt need to use main could have set it to scanner.nextline() through out
         //should have reset this string to int
 
@@ -38,7 +79,7 @@ public class Main {
             System.out.println("How much would you like to withdraw?");
         }
 
-        String withdrawAmount = Main.scanner.nextLine();
+        String withdrawAmount = scanner.nextLine();
 
         int a = Integer.parseInt(withdrawAmount);
         //the way I interpreted hardmode was that withdraws that could be made with a combo of 5's, 10's and 20's were cool
@@ -62,6 +103,7 @@ public class Main {
 
 
 }
+     */
         // 2. prompt a user for a choice (1, 2, or 3.)
         // print "Make a selection: 1, 2, 3"
         // read in a value, convert it to an integer (1, 2, 3)
