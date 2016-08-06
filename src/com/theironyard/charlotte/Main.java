@@ -12,7 +12,7 @@ public class Main {
 
         account.put("mike", 100.00);
         account.put("ben", 200.00);
-
+    while (true) {
         System.out.println("Welcome");
         System.out.println("What is your name?");
 
@@ -46,7 +46,49 @@ public class Main {
         System.out.println("Hello " + name);
         System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
 
+        String optPrompt = scanner.nextLine();
+        int optResult = Integer.parseInt(optPrompt);
 
+        while (optResult < 5) {
+            switch(optResult) {
+                case 1 :
+                    System.out.println("Your Balance is " + account.get(name));
+                    //code for check balance
+                    break;
+                case 2 :
+                    //code for withdraw
+                    System.out.println("How much would you like to withdraw?");
+                    String withdrawAmount = scanner.nextLine();
+                    //if statement for insufficient funds
+                    double a = Double.parseDouble(withdrawAmount);
+                    double remainingBalance = (account.get(name) - a);
+                    account.put(name,remainingBalance);
+                    System.out.println("Your remaining balance is " + account.get(name));
+                    System.out.println("Please take your cash below.");
+                    break;
+                case 3 :
+                    //code for cancel
+                    System.out.println("3 works");
+                    break;
+                case 4 :
+                    //code for remove account
+                    System.out.println("Which account name would you like to remove?");
+                    String removeAccount = scanner.nextLine();
+                    account.remove(removeAccount);
+                    break;
+
+            }
+            System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
+                optPrompt = scanner.nextLine();
+                optResult = Integer.parseInt(optPrompt);
+
+
+
+
+
+        }
+
+    }
 
 
 
@@ -65,26 +107,16 @@ public class Main {
 /*
 
 
-        String promptResult = scanner.nextLine();
-        //didnt need to use main could have set it to scanner.nextline() through out
-        //should have reset this string to int
 
-        if (promptResult.equals("1")){
-            System.out.println("Your Balance is $100");
-        }
         else if (promptResult.equals("3")){
             System.out.println("Thank you and please come again.");
         }
         else if (promptResult.equals("2")) {
-            System.out.println("How much would you like to withdraw?");
         }
 
-        String withdrawAmount = scanner.nextLine();
 
-        int a = Integer.parseInt(withdrawAmount);
         //the way I interpreted hardmode was that withdraws that could be made with a combo of 5's, 10's and 20's were cool
         if (a < 100 && (a % 5 == 0)) {
-            int remainingBalance = (100 - a);
             System.out.println("Your available balance is " + remainingBalance + " dollars");
             System.out.println("Please take your cash below");
         }
