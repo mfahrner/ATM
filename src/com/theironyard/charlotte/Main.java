@@ -65,6 +65,9 @@ public class Main {
                         String withdrawAmount = scanner.nextLine();
                         //if statement for insufficient funds
                         double a = Double.parseDouble(withdrawAmount);
+                        if (a > account.get(name)) {
+                            throw new Exception("insufficient funds");
+                        }
                         double remainingBalance = (account.get(name) - a);
                         account.put(name, remainingBalance);
                         System.out.println("Your remaining balance is " + account.get(name));
@@ -83,15 +86,11 @@ public class Main {
                         System.out.println("Which account name would you like to remove?");
                         String removeAccount = scanner.nextLine();
                         account.remove(removeAccount);
+                        System.out.println("Your account has now been removed \nThank you have a good day");
                         break;
                 }
-
-
-
-
                 break;
         }
-
 
     }
     }
