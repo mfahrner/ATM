@@ -12,95 +12,91 @@ public class Main {
 
         account.put("mike", 100.00);
         account.put("ben", 200.00);
-    while (true) {
-        System.out.println("Welcome");
-        System.out.println("What is your name?");
+        while (true) {
+            System.out.println("Welcome");
+            System.out.println("What is your name?");
 
-        String name = scanner.nextLine();
-        //if statement to verify if user is in hashmap
+            String name = scanner.nextLine();
+            //if statement to verify if user is in hashmap
 
-        if (name.equals("")) {
-            throw new Exception("Gotta have a name to get cash!");
-        }
-
-        //if name is not recognized in hashmap-prompt for new account is good
-        //created account should include name and starting balance
-        if (!account.containsKey(name)) {
-            System.out.println("Would you like to create a new account [y/n]?");
-
-            String accPrompt = scanner.nextLine();
-
-            //don't know how to test if this is working?
-            if (accPrompt.equalsIgnoreCase("y")) {
-                System.out.println("Please input starting account balance");
-                String sBalance = scanner.nextLine();
-                double startBalance = Double.parseDouble(sBalance);
-                account.put(name, startBalance);
+            if (name.equals("")) {
+                throw new Exception("Gotta have a name to get cash!");
             }
-            //thought about loop here but think i might be making it too hard
-            else if (accPrompt.equalsIgnoreCase("n")) {
-                System.out.println("Well fine then punk");
-                System.exit(0);
+
+            //if name is not recognized in hashmap-prompt for new account is good
+            //created account should include name and starting balance
+            if (!account.containsKey(name)) {
+                System.out.println("Would you like to create a new account [y/n]?");
+
+                String accPrompt = scanner.nextLine();
+
+                //don't know how to test if this is working?
+                if (accPrompt.equalsIgnoreCase("y")) {
+                    System.out.println("Please input starting account balance");
+                    String sBalance = scanner.nextLine();
+                    double startBalance = Double.parseDouble(sBalance);
+                    account.put(name, startBalance);
+                }
+                //thought about loop here but think i might be making it too hard
+                else if (accPrompt.equalsIgnoreCase("n")) {
+                    System.out.println("Well fine then punk");
+                    System.exit(0);
+                }
             }
-        }
-        System.out.println("Hello " + name);
-        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
-
-        String optPrompt = scanner.nextLine();
-        int optResult = Integer.parseInt(optPrompt);
-
-        while (optResult < 5) {
-            switch(optResult) {
-                case 1 :
-                    System.out.println("Your Balance is " + account.get(name));
-                    //code for check balance
-                    break;
-                case 2 :
-                    //code for withdraw
-                    System.out.println("How much would you like to withdraw?");
-                    String withdrawAmount = scanner.nextLine();
-                    //if statement for insufficient funds
-                    double a = Double.parseDouble(withdrawAmount);
-                    double remainingBalance = (account.get(name) - a);
-                    account.put(name,remainingBalance);
-                    System.out.println("Your remaining balance is " + account.get(name));
-                    System.out.println("Please take your cash below.");
-                    break;
-                case 3 :
-                    //code for cancel
-                    System.out.println("3 works");
-                    break;
-                case 4 :
-                    //code for remove account
-                    System.out.println("Which account name would you like to remove?");
-                    String removeAccount = scanner.nextLine();
-                    account.remove(removeAccount);
-                    break;
-
-            }
+            System.out.println("Hello " + name);
             System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
-                optPrompt = scanner.nextLine();
-                optResult = Integer.parseInt(optPrompt);
+
+            String optPrompt = scanner.nextLine();
+            int optResult = Integer.parseInt(optPrompt);
+
+            while (optResult < 5) {
+                switch (optResult) {
+                    case 1:
+                        System.out.println("Your Balance is " + account.get(name));
+                        //code for check balance
+                        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
+                        optPrompt = scanner.nextLine();
+                        optResult = Integer.parseInt(optPrompt);
+                        continue;
+
+                    case 2:
+                        //code for withdraw
+                        System.out.println("How much would you like to withdraw?");
+                        String withdrawAmount = scanner.nextLine();
+                        //if statement for insufficient funds
+                        double a = Double.parseDouble(withdrawAmount);
+                        double remainingBalance = (account.get(name) - a);
+                        account.put(name, remainingBalance);
+                        System.out.println("Your remaining balance is " + account.get(name));
+                        System.out.println("Please take your cash below.");
+                        System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account");
+                        optPrompt = scanner.nextLine();
+                        optResult = Integer.parseInt(optPrompt);
+                        continue;
+                    case 3:
+                        System.out.println("Thank you come again");
+                        break;
+
+
+                    case 4:
+                        //code for remove account
+                        System.out.println("Which account name would you like to remove?");
+                        String removeAccount = scanner.nextLine();
+                        account.remove(removeAccount);
+                        break;
+                }
 
 
 
 
-
+                break;
         }
+
 
     }
-
-
-
-
-
-
-
-
-
-
     }
 }
+
 
 
 
