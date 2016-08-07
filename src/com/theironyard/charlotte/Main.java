@@ -33,8 +33,10 @@ public class Main {
 
                 if (accPrompt.equalsIgnoreCase("y")) {
                     System.out.println("Please input starting account balance");
+
                     String sBalance = scanner.nextLine();
                     double startBalance = Double.parseDouble(sBalance);
+
                     account.put(name, startBalance);
                 }
                 else if (accPrompt.equalsIgnoreCase("n")) {
@@ -51,9 +53,10 @@ public class Main {
             while (optResult < 6) {
                 switch (optResult) {
                     case 1:
-                        System.out.println("Your Balance is " + account.get(name));
                         //code for check balance
+                        System.out.println("Your Balance is " + account.get(name));
                         System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account \n5.Transfer Funds");
+
                         optPrompt = scanner.nextLine();
                         optResult = Integer.parseInt(optPrompt);
                         continue;
@@ -61,17 +64,21 @@ public class Main {
                     case 2:
                         //code for withdraw
                         System.out.println("How much would you like to withdraw?");
+
                         String withdrawAmount = scanner.nextLine();
-                        //if statement for insufficient funds
                         double a = Double.parseDouble(withdrawAmount);
+
                         if (a > account.get(name)) {
                             throw new Exception("insufficient funds");
                         }
+
                         double remainingBalance = (account.get(name) - a);
                         account.put(name, remainingBalance);
+
                         System.out.println("Your remaining balance is " + account.get(name));
                         System.out.println("Please take your cash below.");
                         System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account \n5.Transfer Funds");
+
                         optPrompt = scanner.nextLine();
                         optResult = Integer.parseInt(optPrompt);
                         continue;
@@ -79,51 +86,51 @@ public class Main {
                         System.out.println("Thank you come again");
                         break;
 
-
                     case 4:
                         //code for remove account
                         System.out.println("Which account name would you like to remove?");
+
                         String removeAccount = scanner.nextLine();
                         account.remove(removeAccount);
+
                         System.out.println("Your account has now been removed \nThank you have a good day");
                         break;
                     case 5:
                         //code for transfer funds
                         System.out.println("Which account would you like to transfer funds to?");
+
                         String transferAccount = scanner.nextLine();
+
+                        if (!account.containsKey(transferAccount)) {
+                            throw new Exception("Invalid Account!");
+                        }
+
                         System.out.println("How much would you like to transfer?");
+
                         String transAmmount = scanner.nextLine();
                         double transferAmmount = Double.parseDouble(transAmmount);
+
                         double balanceSubTransfer = (account.get(name) - transferAmmount);
+
                         if (transferAmmount > (account.get(name))) {
                             throw new Exception("Sorry you don't have that much to give");
                         }
+
                         account.put(name, balanceSubTransfer);
+
                         double balanceAddTransfer = (account.get(transferAccount) + transferAmmount);
+
                         account.put(transferAccount, balanceAddTransfer);
+
                         System.out.println("Your funds have been transfered.\nYour remaining balance is " + balanceSubTransfer);
                         System.out.println("Would you like to? \n1.Check Balance \n2.Withdraw Funds \n3.Cancel \n4.Remove Account \n5.Transfer Funds");
+
                         optPrompt = scanner.nextLine();
                         optResult = Integer.parseInt(optPrompt);
                         continue;
                 }
                 break;
         }
-    }
+        }
     }
 }
-
-
-
-
-/*
-
-        //the way I interpreted hardmode was that withdraws that could be made with a combo of 5's, 10's and 20's were cool
-        if (a < 100 && (a % 5 == 0)) {
-            System.out.println("Your available balance is " + remainingBalance + " dollars");
-            System.out.println("Please take your cash below");
-
-        else if (a < 100 && (a % 5 != 0)) {
-            System.out.println("Invalid submission. \nCan only withdraw 5's, 10's or 20's");
-            throw new Exception("Invalid submission");
-*/
