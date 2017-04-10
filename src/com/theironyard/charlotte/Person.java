@@ -4,6 +4,7 @@ package com.theironyard.charlotte;
  * Created by mfahrner on 8/4/16.
  */
 public class Person {
+
     private String name;
     private double accountBalance;
 
@@ -11,6 +12,7 @@ public class Person {
         this.name = name;
         this.accountBalance = accountBalance;
     }
+
     public String getName() {
         return name;
     }
@@ -26,7 +28,4 @@ public class Person {
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
-
-
-
 }
